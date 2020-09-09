@@ -1,5 +1,5 @@
 struct MAP{
-    char mapdata[10][10];	
+    char mapdata[20][20];      //update your header file >:(
 };
 
 

@@ -22,7 +22,7 @@ struct MAP LoadMap(void){
            if (value == '\n') continue;
   
 	   mapinfo[x][y] = value;
-           printf("%2d  %2d  =  %c\n",x,y,mapinfo[x][y]);
+//           printf("%2d  %2d  =  %c\n",x,y,mapinfo[x][y]);
            if (y == 19){ x=(x+1)%20;} 
            y=(y+1)%20;}
 
@@ -33,22 +33,24 @@ struct MAP LoadMap(void){
 	for(int x=0;x<20;x++){
 		for(int y=0;y<20;y++){
 		map.mapdata[x][y]=mapinfo[x][y];   
-		printf("%c",map.mapdata[x][y]);      //debug
 
 		}
-		printf("\n");                    //debug
 	}
 
 
+/***********************************************************	
+	
 	//============== debug start ================
 	for(int x=0;x<20;x++){
 		for(int y=0;y<20;y++){
-		printf("%c",map.mapdata[x][y]);      
+		printf("%2d  %2d  =  %c\n",x,y,map.mapdata[x][y]);      
 
 		}
 		printf("\n");                    
 	}
         //=============  debug end =================
+	
+************************************************************/
 
 	return map;
 }
@@ -57,10 +59,6 @@ struct MAP LoadMap(void){
 //render the map
 
 void RenderMap(struct MAP map,int cellx,int celly){
-
-
-	
-
 	for(int x=0;x<20;x++){         
 		for(int y=0;y<20;y++){
 			if(map.mapdata[y][x]=='#'){DrawRectangle(x*cellx,y*celly,cellx,celly,RED);}
