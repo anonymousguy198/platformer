@@ -19,10 +19,12 @@ struct MAP LoadMap(void){
 
    	int x=0, y=0;
    	while ((value = fgetc(f)) != EOF){
-       if (value == '\n') continue;
-       mapinfo[x][y] = value;
-       if (y == 9){ x=(x+1)%20;} 
-       y=(y+1)%20;}
+           if (value == '\n') continue;
+  
+	   mapinfo[x][y] = value;
+           printf("%2d  %2d  =  %c\n",x,y,mapinfo[x][y]);
+           if (y == 19){ x=(x+1)%20;} 
+           y=(y+1)%20;}
 
 
 	//===========================FILE LOAD END=============//
@@ -30,9 +32,24 @@ struct MAP LoadMap(void){
 	//loding in struct
 	for(int x=0;x<20;x++){
 		for(int y=0;y<20;y++){
-		map.mapdata[y][x]=mapinfo[y][x];
+		map.mapdata[x][y]=mapinfo[x][y];   
+		printf("%c",map.mapdata[x][y]);      //debug
+
 		}
+		printf("\n");                    //debug
 	}
+
+
+	//============== debug start ================
+	for(int x=0;x<20;x++){
+		for(int y=0;y<20;y++){
+		printf("%c",map.mapdata[x][y]);      
+
+		}
+		printf("\n");                    
+	}
+        //=============  debug end =================
+
 	return map;
 }
 
@@ -40,6 +57,9 @@ struct MAP LoadMap(void){
 //render the map
 
 void RenderMap(struct MAP map,int cellx,int celly){
+
+
+	
 
 	for(int x=0;x<20;x++){         
 		for(int y=0;y<20;y++){
